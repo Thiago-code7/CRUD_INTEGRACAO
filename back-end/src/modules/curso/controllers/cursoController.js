@@ -1,11 +1,11 @@
-const Curso = require('../../curso/models/cursoModel');
+const {Aluno, Curso} = require('../../index');
 class CursoController {
 
     static async criar(req, res) {
         try {
             const { cod_curso, nome } = req.body
             if (cod_curso && nome) {
-                const curso = await cod_curso.create({ cod_curso, nome });
+                const curso = await Curso.create({ cod_curso, nome });
                 res.status(201).json({ mensagem: 'Curso cadastrado com sucesso', curso })
             } else {
                 res.status(400).json({ mensagem: 'Todos os campos devem ser preenchidos' })
