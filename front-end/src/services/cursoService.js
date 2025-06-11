@@ -12,6 +12,7 @@ class CursoService {
     }
     static async criar(dados){
         try {
+            console.log(dados);
             const res = await api.post('/cursos', dados);
             return res.data;
         } catch (error) {

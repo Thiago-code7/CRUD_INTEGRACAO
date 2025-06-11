@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"; // importas os hooks do react
-import CursoService from "../../services/cursoService";
+import AlunoService from "../../services/alunoService";
 
-function ListarCursos() {
+function ListarAlunos() {
     //Estado para armazenar os cursos
-    const [cursos, setCursos] = useState([]);
+    const [alunos, setAlunos] = useState([]);
 
     //Função para carregar a lista de cursos 
     const carregar = async () => {
@@ -21,27 +21,31 @@ function ListarCursos() {
 
     return (
         <>
-            <h1>Listagem de cursos</h1>
+            <h1>Listagem de alunos</h1>
             {
-                cursos.length === 0 ?
+                alunos.length === 0 ?
                     (
-                        <p>Nenhum curso cadastrado no sistema.</p>
+                        <p>Nenhum aluno cadastrado no sistema.</p>
                     )
                     :
                     (
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Código</th>
-                                    <th>Nome</th>
+                                    <th>matricula</th>
+                                    <th>nome do aluno</th>
+                                    <th>codigo do curso</th>
+                                    <th>nome do curso</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    cursos.map((c) => (
-                                        <tr key={c.cod_curso}>
-                                            <td>{c.cod_curso}</td>
-                                            <td>{c.nome}</td>
+                                    alunos.map((a) => (
+                                        <tr key={a.matricula}>
+                                            <td>{a.matricula}</td>
+                                            <td>{a.nome}</td>
+                                            <td>{a.cod_curso}</td>
+                                            <td>{a.curso.nome}</td>
                                         </tr>
                                     ))
                                 }
@@ -54,4 +58,4 @@ function ListarCursos() {
     )
 }
 
-export default ListarCursos;
+export default ListarAlunos;
